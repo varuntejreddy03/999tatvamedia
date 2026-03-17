@@ -48,7 +48,7 @@ const FOUNDERS = [
   { initials: 'VD', name: 'Vijay Daniel', title: 'COO' },
 ]
 
-const fadeUp = { hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] } } }
+const fadeUp = { hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] as const } } }
 
 export default function About() {
   return (
@@ -97,7 +97,7 @@ export default function About() {
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.12, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ delay: i * 0.12, duration: 0.55, ease: [0.16, 1, 0.3, 1] as const }}
               >
                 <div style={{
                   width: 64, height: 64, borderRadius: '50%',

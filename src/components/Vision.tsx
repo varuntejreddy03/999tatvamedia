@@ -51,7 +51,7 @@ export default function Vision() {
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] as const }}
             style={{
               fontFamily: '"Clash Display", sans-serif', fontWeight: 500,
               fontSize: 'clamp(20px, 2.8vw, 36px)',

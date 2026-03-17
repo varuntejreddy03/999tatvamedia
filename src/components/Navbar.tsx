@@ -151,7 +151,7 @@ export default function Navbar() {
             initial={{ clipPath: 'inset(0 0 100% 0)', opacity: 0 }}
             animate={{ clipPath: 'inset(0 0 0% 0)', opacity: 1 }}
             exit={{ clipPath: 'inset(0 0 100% 0)', opacity: 0 }}
-            transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] as const }}
             style={{
               position: 'fixed', inset: 0, zIndex: 110,
               background: '#050505',
@@ -186,7 +186,7 @@ export default function Navbar() {
                   key={link}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.06, ease: [0.16, 1, 0.3, 1], duration: 0.4 }}
+                  transition={{ delay: i * 0.06, ease: [0.16, 1, 0.3, 1] as const, duration: 0.4 }}
                   onClick={() => { setOpen(false); scrollTo(link) }}
                   style={{
                     fontFamily: '"Clash Display", sans-serif', fontWeight: 600,
@@ -216,7 +216,7 @@ export default function Navbar() {
               <motion.button
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.34, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ delay: 0.34, ease: [0.16, 1, 0.3, 1] as const }}
                 className="btn-primary"
                 whileTap={{ scale: 0.97 }}
                 onClick={() => { setOpen(false); scrollTo('contact') }}

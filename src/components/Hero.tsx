@@ -62,7 +62,7 @@ export default function Hero() {
                   key={line}
                   initial={{ y: 80, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.9, delay: 0.18 + i * 0.12, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{ duration: 0.9, delay: 0.18 + i * 0.12, ease: [0.16, 1, 0.3, 1] as const }}
                   style={{
                     fontFamily: '"Clash Display", sans-serif', fontWeight: 600,
                     fontSize: 'clamp(48px, 9vw, 108px)',
@@ -77,7 +77,7 @@ export default function Hero() {
               <motion.div
                 initial={{ y: 80, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.9, delay: 0.42, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 0.9, delay: 0.42, ease: [0.16, 1, 0.3, 1] as const }}
                 style={{
                   fontFamily: '"Clash Display", sans-serif', fontWeight: 600,
                   fontSize: 'clamp(48px, 9vw, 108px)',
@@ -94,7 +94,7 @@ export default function Hero() {
                       initial={{ opacity: 0, y: -50 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 50 }}
-                      transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
+                      transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] as const }}
                       className="gradient-text"
                       style={{ display: 'inline-block' }}
                     >
@@ -109,7 +109,7 @@ export default function Hero() {
             <motion.p
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.62, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.7, delay: 0.62, ease: [0.16, 1, 0.3, 1] as const }}
               style={{
                 fontFamily: '"Cabinet Grotesk", sans-serif', fontWeight: 400,
                 fontSize: 'clamp(15px, 2vw, 18px)',
@@ -124,7 +124,7 @@ export default function Hero() {
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.76, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.7, delay: 0.76, ease: [0.16, 1, 0.3, 1] as const }}
               style={{ display: 'flex', gap: 12, marginTop: 40, flexWrap: 'wrap', justifyContent: 'center' }}
             >
               <motion.button

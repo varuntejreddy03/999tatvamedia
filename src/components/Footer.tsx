@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion'
 import { Instagram, Mail, ArrowUpRight } from 'lucide-react'
 
-const CD = '"Clash Display", sans-serif'
 const CG = '"Cabinet Grotesk", sans-serif'
 const NAV_LINKS = ['Home', 'Services', 'About', 'Vision', 'Contact']
 

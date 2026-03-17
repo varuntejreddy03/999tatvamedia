@@ -12,7 +12,7 @@ const ITEMS = [
   { Icon: Clock,     label: 'Hours',     value: 'Mon–Sat: 9:00 AM – 6:00 PM | Sun: Holiday', href: null,                       gradient: false },
 ]
 
-const fadeUp = { hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] } } }
+const fadeUp = { hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] as const } } }
 
 export default function Contact() {
   return (
