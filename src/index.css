@@ -1,0 +1,355 @@
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=cabinet-grotesk@400,500,700,800,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── BRAND TOKENS ─────────────────────────────────────────── */
+:root {
+  --brand-gradient: linear-gradient(135deg, #FF6B00 0%, #FF3CAC 40%, #784BA0 70%, #2B86C5 100%);
+  --bg-deep:        #050505;
+  --bg-section:     #080808;
+  --bg-card:        #0F0F0F;
+  --bg-card-hover:  #141414;
+  --border-subtle:  rgba(255, 255, 255, 0.06);
+  --text-white:     #FFFFFF;
+  --text-muted:     rgba(255, 255, 255, 0.45);
+  --text-dim:       rgba(255, 255, 255, 0.25);
+  --orange:         #FF6B00;
+  --pink:           #FF3CAC;
+  --purple:         #784BA0;
+  --blue:           #2B86C5;
+}
+
+/* ─── RESET ─────────────────────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; background: #050505; }
+
+body {
+  background: #050505 !important;
+  color: #fff;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root { background: #050505 !important; min-height: 100vh; }
+
+section { background: transparent; overflow-x: hidden; max-width: 100vw; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Clash Display', sans-serif;
+  font-weight: 600;
+  line-height: 1.05;
+}
+
+/* ─── SCROLLBAR ─────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: #050505; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #FF6B00, #FF3CAC, #2B86C5);
+  border-radius: 2px;
+}
+
+/* ─── GRADIENT TEXT ─────────────────────────────────────────── */
+.gradient-text {
+  background: var(--brand-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── GRADIENT BORDER ───────────────────────────────────────── */
+.gradient-border {
+  border: 1px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+}
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: var(--brand-gradient);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ─── CONTAINER ─────────────────────────────────────────────── */
+.container-main { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+@media (min-width: 768px)  { .container-main { padding: 0 48px; } }
+@media (min-width: 1024px) { .container-main { padding: 0 80px; } }
+
+/* ─── EYEBROW ───────────────────────────────────────────────── */
+.eyebrow {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+
+/* ─── MARQUEE ───────────────────────────────────────────────── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-inner {
+  display: flex;
+  white-space: nowrap;
+  animation: marquee 55s linear infinite;
+  width: max-content;
+}
+.marquee-inner:hover { animation-play-state: paused; }
+
+/* ─── SECTION DIVIDER ───────────────────────────────────────── */
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,107,0,0.25), rgba(255,60,172,0.25), rgba(43,134,197,0.25), transparent);
+}
+
+/* ─── BUTTONS ───────────────────────────────────────────────── */
+@keyframes shimmer {
+  0%   { left: -100%; }
+  100% { left: 100%; }
+}
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #FF6B00, #FF3CAC, #784BA0, #2B86C5);
+  background-size: 200% 200%;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 14px 36px;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+.btn-primary:hover {
+  animation: gradientShift 2s ease infinite;
+  box-shadow: 0 8px 40px rgba(255,60,172,0.4), 0 4px 15px rgba(255,107,0,0.25);
+}
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transform: skewX(-20deg);
+}
+.btn-primary:hover::after {
+  animation: shimmer 0.7s ease forwards;
+}
+
+.btn-secondary {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #fff;
+  border-radius: 50px;
+  padding: 14px 36px;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: all 0.25s ease;
+}
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.09);
+  border-color: rgba(255,255,255,0.28);
+  box-shadow: 0 0 30px rgba(255,255,255,0.06);
+}
+
+/* ─── SERVICE CARDS ─────────────────────────────────────────── */
+.service-card {
+  position: relative;
+  background: rgba(10,10,10,0.9);
+  padding: 36px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: background 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
+}
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--brand-gradient);
+  opacity: 0.5;
+  transition: opacity 0.35s ease;
+}
+.service-card:hover {
+  background: rgba(15,15,15,0.95);
+  box-shadow: 0 0 80px rgba(255,60,172,0.12), 0 0 30px rgba(255,107,0,0.08);
+  transform: translateY(-4px);
+}
+.service-card:hover::before { opacity: 1; }
+
+/* ─── FORM INPUTS ───────────────────────────────────────────── */
+.form-input {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 14px 18px;
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-size: 15px;
+  color: #fff;
+  width: 100%;
+  outline: none;
+  transition: all 0.25s ease;
+  margin-bottom: 14px;
+  display: block;
+}
+.form-input::placeholder { color: rgba(255,255,255,0.22); }
+.form-input:focus {
+  border-color: rgba(255,60,172,0.6);
+  background: rgba(255,255,255,0.05);
+  box-shadow: 0 0 0 3px rgba(255,60,172,0.08), 0 0 20px rgba(255,60,172,0.06);
+}
+
+/* ─── NOISE OVERLAY ─────────────────────────────────────────── */
+.noise-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.02;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── GLOW UTILITIES ────────────────────────────────────────── */
+.glow-orange { box-shadow: 0 0 40px rgba(255,107,0,0.15); }
+.glow-pink   { box-shadow: 0 0 40px rgba(255,60,172,0.15); }
+.glow-blue   { box-shadow: 0 0 40px rgba(43,134,197,0.15); }
+
+/* ─── FOUNDER CARD ──────────────────────────────────────────── */
+.founder-card {
+  background: rgba(15,15,15,0.9);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 20px;
+  padding: 32px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.founder-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--brand-gradient);
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+}
+.founder-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(255,60,172,0.1);
+  border-color: rgba(255,255,255,0.12);
+}
+.founder-card:hover::after { opacity: 1; }
+
+/* ─── STAT CARD ─────────────────────────────────────────────── */
+.stat-card {
+  background: rgba(15,15,15,0.85);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  padding: 28px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+.stat-card:hover {
+  border-color: rgba(255,107,0,0.25);
+  box-shadow: 0 8px 40px rgba(255,107,0,0.08);
+  transform: translateY(-3px);
+}
+
+/* ─── APPROACH PILLAR ───────────────────────────────────────── */
+.pillar-card {
+  padding: 32px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.04);
+  background: rgba(8,8,8,0.6);
+  transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+}
+.pillar-card:hover {
+  border-color: rgba(255,60,172,0.2);
+  background: rgba(15,15,15,0.8);
+  transform: translateY(-4px);
+}
+
+/* ─── CONTACT INFO ITEM ─────────────────────────────────────── */
+.contact-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+.contact-item:hover {
+  border-color: rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+}
+
+/* ─── SCROLL REVEAL BASE ────────────────────────────────────── */
+.reveal { opacity: 0; transform: translateY(30px); }
+
+/* ─── SERVICES GRID MOBILE ─────────────────────────────────── */
+@media (max-width: 767px) {
+  .service-card { grid-column: span 1 !important; }
+  .services-grid { grid-template-columns: 1fr !important; }
+}
+@media (max-width: 767px) {
+
+  .container-main { padding: 0 20px; }
+
+  /* Service cards — all span 1 on mobile */
+  .service-card { grid-column: span 1 !important; }
+
+  /* Buttons full width on mobile */
+  .btn-primary, .btn-secondary {
+    width: 100%;
+    justify-content: center;
+    padding: 15px 20px;
+    font-size: 15px;
+  }
+
+  /* Stat cards */
+  .stat-card { padding: 20px; }
+
+  /* Pillar cards */
+  .pillar-card { padding: 24px; }
+
+  /* Contact item */
+  .contact-item { padding: 12px; }
+
+  /* Prevent iOS zoom on inputs */
+  .form-input { font-size: 16px; }
+
+  /* Vision section padding */
+  #vision { padding: 80px 0 !important; }
+}
+
+@media (max-width: 480px) {
+  .container-main { padding: 0 16px; }
+}
