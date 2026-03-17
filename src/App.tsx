@@ -15,6 +15,8 @@ import './index.css'
 
 const Divider = () => <div className="section-divider" />
 
+export let lenisInstance: Lenis | null = null
+
 export default function App() {
   useEffect(() => {
     document.body.style.background = '#050505'
@@ -26,12 +28,13 @@ export default function App() {
       wheelMultiplier: 0.6,
       touchMultiplier: 0.8,
     })
+    lenisInstance = lenis
     function raf(time: number) {
       lenis.raf(time)
       requestAnimationFrame(raf)
     }
     requestAnimationFrame(raf)
-    return () => lenis.destroy()
+    return () => { lenis.destroy(); lenisInstance = null }
   }, [])
 
   return (

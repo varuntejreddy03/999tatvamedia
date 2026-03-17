@@ -1,11 +1,18 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion'
 import { Menu, X, ArrowRight, Phone, Mail } from 'lucide-react'
+import { lenisInstance } from '../App'
 
 const NAV_LINKS = ['Home', 'Services', 'About', 'Vision', 'Contact']
 
-function scrollTo(id: string) {
-  document.getElementById(id.toLowerCase())?.scrollIntoView({ behavior: 'smooth' })
+function scrollToSection(id: string) {
+  const target = document.getElementById(id.toLowerCase())
+  if (!target) return
+  if (lenisInstance) {
+    lenisInstance.scrollTo(target, { offset: -80, duration: 1.4 })
+  } else {
+    target.scrollIntoView({ behavior: 'smooth' })
+  }
 }
 
 export default function Navbar() {
@@ -13,9 +20,29 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [active, setActive] = useState('Home')
   const [hovered, setHovered] = useState<string | null>(null)
+  const [pillStyle, setPillStyle] = useState({ left: 0, width: 0, opacity: 0 })
+  const btnRefs = useRef<(HTMLButtonElement | null)[]>([])
   const { scrollY } = useScroll()
 
   useMotionValueEvent(scrollY, 'change', (v) => setScrolled(v > 60))
+
+  // Move pill to active button
+  useEffect(() => {
+    const idx = NAV_LINKS.indexOf(active)
+    const btn = btnRefs.current[idx]
+    if (btn) {
+      const parent = btn.parentElement
+      if (parent) {
+        const parentRect = parent.getBoundingClientRect()
+        const btnRect = btn.getBoundingClientRect()
+        setPillStyle({
+          left: btnRect.left - parentRect.left,
+          width: btnRect.width,
+          opacity: 1,
+        })
+      }
+    }
+  }, [active])
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : ''
@@ -53,7 +80,7 @@ export default function Navbar() {
             {/* Logo */}
             <motion.a
               href="#"
-              onClick={(e) => { e.preventDefault(); scrollTo('home') }}
+              onClick={(e) => { e.preventDefault(); scrollToSection('home') }}
               style={{ display: 'flex', alignItems: 'center', flexShrink: 0, textDecoration: 'none' }}
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
@@ -66,7 +93,7 @@ export default function Navbar() {
               className="hidden md:flex"
               style={{
                 position: 'absolute', left: '50%', transform: 'translateX(-50%)',
-                alignItems: 'center', gap: 4,
+                alignItems: 'center', gap: 0,
                 background: 'rgba(0,0,0,0.04)',
                 border: '1px solid rgba(0,0,0,0.08)',
                 borderRadius: 50,
@@ -74,10 +101,25 @@ export default function Navbar() {
                 whiteSpace: 'nowrap',
               }}
             >
-              {NAV_LINKS.map((link) => (
+              {/* Single sliding pill */}
+              <motion.span
+                animate={{ left: pillStyle.left, width: pillStyle.width, opacity: pillStyle.opacity }}
+                transition={{ type: 'spring', stiffness: 400, damping: 35 }}
+                style={{
+                  position: 'absolute', top: 5, bottom: 5,
+                  borderRadius: 50,
+                  background: 'rgba(0,0,0,0.07)',
+                  border: '1px solid rgba(0,0,0,0.1)',
+                  pointerEvents: 'none',
+                  zIndex: 0,
+                }}
+              />
+
+              {NAV_LINKS.map((link, i) => (
                 <button
                   key={link}
-                  onClick={() => { scrollTo(link); setActive(link) }}
+                  ref={(el) => { btnRefs.current[i] = el }}
+                  onClick={() => { scrollToSection(link); setActive(link) }}
                   onMouseEnter={() => setHovered(link)}
                   onMouseLeave={() => setHovered(null)}
                   style={{
@@ -91,32 +133,19 @@ export default function Navbar() {
                     padding: '7px 16px',
                     borderRadius: 50,
                     letterSpacing: '0.1px',
-                    color: active === link ? '#000000' : hovered === link ? '#000000' : '#1a1a1a',
-                    transition: 'color 0.2s',
+                    color: active === link ? '#000000' : hovered === link ? '#000000' : '#555555',
+                    transition: 'color 0.2s, font-weight 0.2s',
                     zIndex: 1,
+                    display: 'flex', alignItems: 'center', gap: 6,
                   }}
                 >
-                  {/* Active pill bg */}
-                  {active === link && (
-                    <motion.span
-                      layoutId="nav-pill"
-                      style={{
-                        position: 'absolute', inset: 0, borderRadius: 50,
-                        background: 'rgba(0,0,0,0.07)',
-                        border: '1px solid rgba(0,0,0,0.1)',
-                        zIndex: -1,
-                      }}
-                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                    />
-                  )}
                   {link}
-                  {/* Gradient dot for active */}
                   {active === link && (
                     <span style={{
-                      display: 'inline-block', width: 4, height: 4,
-                      borderRadius: '50%', background: 'var(--brand-gradient)',
-                      marginLeft: 6, verticalAlign: 'middle',
+                      width: 4, height: 4, borderRadius: '50%',
+                      background: 'var(--brand-gradient)',
                       boxShadow: '0 0 6px rgba(255,60,172,0.8)',
+                      flexShrink: 0,
                     }} />
                   )}
                 </button>
@@ -187,7 +216,7 @@ export default function Navbar() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.06, ease: [0.16, 1, 0.3, 1] as const, duration: 0.4 }}
-                  onClick={() => { setOpen(false); scrollTo(link) }}
+                  onClick={() => { setOpen(false); scrollToSection(link) }}
                   style={{
                     fontFamily: '"Clash Display", sans-serif', fontWeight: 600,
                     fontSize: 'clamp(26px, 7vw, 38px)',
@@ -219,7 +248,7 @@ export default function Navbar() {
                 transition={{ delay: 0.34, ease: [0.16, 1, 0.3, 1] as const }}
                 className="btn-primary"
                 whileTap={{ scale: 0.97 }}
-                onClick={() => { setOpen(false); scrollTo('contact') }}
+                onClick={() => { setOpen(false); scrollToSection('contact') }}
                 style={{ marginTop: 28, width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, fontSize: 15, padding: '15px 24px' }}
               >
                 Get In Touch <ArrowRight size={15} />
