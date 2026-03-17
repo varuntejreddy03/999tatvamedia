@@ -37,15 +37,16 @@ export default function Navbar() {
   return (
     <>
       {/* ── Main Navbar ── */}
-      <div style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100, background: '#050505' }}>
+      <div style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100, background: '#FFFFFF' }}>
         <motion.nav
           animate={{
-            backgroundColor: 'rgba(5,5,5,1)',
-            backdropFilter: 'blur(28px)',
-            boxShadow: scrolled ? '0 1px 0 rgba(255,255,255,0.06), 0 8px 32px rgba(0,0,0,0.6)' : '0 1px 0 rgba(255,255,255,0.04)',
+            backgroundColor: scrolled ? 'rgba(255,255,255,0.95)' : '#FFFFFF',
+            backdropFilter: scrolled ? 'blur(20px)' : 'none',
+            borderBottom: scrolled ? '1px solid rgba(0,0,0,0.1)' : '1px solid rgba(0,0,0,0.08)',
+            boxShadow: scrolled ? '0 2px 20px rgba(0,0,0,0.08)' : 'none',
           }}
           transition={{ duration: 0.4, ease: 'easeOut' }}
-          style={{ width: '100%', background: '#050505' }}
+          style={{ width: '100%', background: '#FFFFFF' }}
         >
           <div className="container-main" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: scrolled ? 60 : 64, transition: 'height 0.4s ease', position: 'relative' }}>
 
@@ -66,11 +67,10 @@ export default function Navbar() {
               style={{
                 position: 'absolute', left: '50%', transform: 'translateX(-50%)',
                 alignItems: 'center', gap: 4,
-                background: 'rgba(255,255,255,0.04)',
-                border: '1px solid rgba(255,255,255,0.08)',
+                background: 'rgba(0,0,0,0.04)',
+                border: '1px solid rgba(0,0,0,0.08)',
                 borderRadius: 50,
                 padding: '5px 8px',
-                backdropFilter: 'blur(12px)',
                 whiteSpace: 'nowrap',
               }}
             >
@@ -91,7 +91,7 @@ export default function Navbar() {
                     padding: '7px 16px',
                     borderRadius: 50,
                     letterSpacing: '0.1px',
-                    color: active === link ? '#fff' : hovered === link ? '#fff' : 'rgba(255,255,255,0.5)',
+                    color: active === link ? '#000000' : hovered === link ? '#000000' : '#1a1a1a',
                     transition: 'color 0.2s',
                     zIndex: 1,
                   }}
@@ -102,8 +102,8 @@ export default function Navbar() {
                       layoutId="nav-pill"
                       style={{
                         position: 'absolute', inset: 0, borderRadius: 50,
-                        background: 'rgba(255,255,255,0.09)',
-                        border: '1px solid rgba(255,255,255,0.1)',
+                        background: 'rgba(0,0,0,0.07)',
+                        border: '1px solid rgba(0,0,0,0.1)',
                         zIndex: -1,
                       }}
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
@@ -129,10 +129,10 @@ export default function Navbar() {
               onClick={() => setOpen(true)}
               whileTap={{ scale: 0.9 }}
               style={{
-                background: 'rgba(255,255,255,0.06)',
-                border: '1px solid rgba(255,255,255,0.1)',
+                background: 'rgba(0,0,0,0.05)',
+                border: '1px solid rgba(0,0,0,0.1)',
                 borderRadius: 10,
-                cursor: 'pointer', color: '#fff',
+                cursor: 'pointer', color: '#1a1a1a',
                 width: 40, height: 40,
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
               }}
@@ -236,8 +236,8 @@ export default function Navbar() {
                   display: 'flex', flexDirection: 'column', gap: 10,
                 }}
               >
-                <a href="tel:+919609681739" style={{ display: 'flex', alignItems: 'center', gap: 8, fontFamily: '"Cabinet Grotesk", sans-serif', fontSize: 13, color: 'rgba(255,255,255,0.3)', textDecoration: 'none' }}>
-                  <Phone size={13} style={{ color: '#FF3CAC' }} /> +91 96096 81739
+                <a href="tel:+916309681739" style={{ display: 'flex', alignItems: 'center', gap: 8, fontFamily: '"Cabinet Grotesk", sans-serif', fontSize: 13, color: 'rgba(255,255,255,0.3)', textDecoration: 'none' }}>
+                  <Phone size={13} style={{ color: '#FF3CAC' }} /> +91 63096 81739
                 </a>
                 <a href="mailto:999tatva.media@gmail.com" style={{ display: 'flex', alignItems: 'center', gap: 8, fontFamily: '"Cabinet Grotesk", sans-serif', fontSize: 13, color: 'rgba(255,255,255,0.3)', textDecoration: 'none' }}>
                   <Mail size={13} style={{ color: '#FF3CAC' }} /> 999tatva.media@gmail.com

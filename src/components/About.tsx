@@ -43,9 +43,10 @@ function StatCard({ value, label, suffix = '' }: { value: number | string; label
 }
 
 const FOUNDERS = [
-  { initials: 'SK', name: 'J. Sai Kiran', title: 'Founder' },
-  { initials: 'V',  name: 'Vishnu',       title: 'Co-Founder' },
-  { initials: 'VD', name: 'Vijay Daniel', title: 'COO' },
+  { initials: 'SK', name: 'J. Sai Kiran',  title: 'Founder' },
+  { initials: 'V',  name: 'Vishnu',         title: 'Co-Founder' },
+  { initials: 'VD', name: 'Vijay Daniel',   title: 'COO' },
+  { initials: 'AS', name: 'Akilesh Singh',  title: 'Creative Head' },
 ]
 
 const fadeUp = { hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] as const } } }
@@ -89,7 +90,7 @@ export default function About() {
         <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
           <div style={{ height: 1, background: 'rgba(255,255,255,0.06)', marginBottom: 48 }} />
           <p className="eyebrow" style={{ marginBottom: 32 }}>The Team</p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: 20 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 20 }} className="founders-grid">
             {FOUNDERS.map((f, i) => (
               <motion.div
                 key={f.name}

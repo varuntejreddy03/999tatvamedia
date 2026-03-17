@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion'
-import { Phone, Mail, MapPin, Instagram, Clock } from 'lucide-react'
+import { Phone, Mail, MapPin, Instagram, Clock, Facebook } from 'lucide-react'
 
 const CD = '"Clash Display", sans-serif'
 const CG = '"Cabinet Grotesk", sans-serif'
 
 const ITEMS = [
-  { Icon: Phone,     label: 'Phone',     value: '+91 96096 81739',             href: 'tel:+919609681739',                       gradient: false },
+  { Icon: Phone,     label: 'Phone',     value: '+91 63096 81739',             href: 'tel:+916309681739',                       gradient: false },
   { Icon: Mail,      label: 'Email',     value: '999tatva.media@gmail.com',    href: 'mailto:999tatva.media@gmail.com',          gradient: false },
   { Icon: MapPin,    label: 'Address',   value: 'Hyderabad, Telangana, India', href: null,                                       gradient: false },
   { Icon: Instagram, label: 'Instagram', value: '@999tatva.media',             href: 'https://www.instagram.com/999tatva.media', gradient: true  },
@@ -66,6 +66,22 @@ export default function Contact() {
                 </div>
               </div>
             ))}
+            {/* Facebook — coming soon */}
+            <div className="contact-item" style={{ opacity: 0.6, cursor: 'default' }}>
+              <div style={{
+                width: 40, height: 40, borderRadius: 10, flexShrink: 0,
+                background: 'rgba(255,255,255,0.04)',
+                border: '1px solid rgba(255,255,255,0.08)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+              }}>
+                <Facebook size={17} style={{ color: '#FF3CAC' }} />
+              </div>
+              <div>
+                <p style={{ fontFamily: CG, fontWeight: 400, fontSize: 11, color: 'rgba(255,255,255,0.25)', letterSpacing: '1px', marginBottom: 3, textTransform: 'uppercase' }}>Facebook</p>
+                <p style={{ fontFamily: CG, fontWeight: 400, fontSize: 14, color: 'rgba(255,255,255,0.45)' }}>Facebook Page</p>
+                <p style={{ fontFamily: CG, fontWeight: 400, fontSize: 11, color: 'rgba(255,255,255,0.25)', letterSpacing: '1px', marginTop: 2 }}>Coming Soon</p>
+              </div>
+            </div>
           </motion.div>
 
           {/* Form */}
@@ -78,12 +94,14 @@ export default function Contact() {
               border: '1px solid rgba(255,255,255,0.07)',
               borderRadius: 24, padding: 40,
               backdropFilter: 'blur(20px)',
+              maxWidth: 520, width: '100%',
+              overflow: 'hidden', boxSizing: 'border-box',
             }}
           >
-            <input type="text"  placeholder="Your Name"                     className="form-input" />
-            <input type="email" placeholder="Email Address"                 className="form-input" />
-            <input type="tel"   placeholder="Phone Number"                  className="form-input" />
-            <textarea           placeholder="Tell us about your project..." rows={4} className="form-input" style={{ resize: 'none', marginBottom: 8 }} />
+            <input type="text"  placeholder="Your Name"                     className="form-input" style={{ boxSizing: 'border-box', maxWidth: '100%' }} />
+            <input type="email" placeholder="Email Address"                 className="form-input" style={{ boxSizing: 'border-box', maxWidth: '100%' }} />
+            <input type="tel"   placeholder="Phone Number"                  className="form-input" style={{ boxSizing: 'border-box', maxWidth: '100%' }} />
+            <textarea           placeholder="Tell us about your project..." rows={4} className="form-input" style={{ resize: 'vertical', marginBottom: 8, minHeight: 120, maxHeight: 200, boxSizing: 'border-box', maxWidth: '100%' }} />
             <motion.button
               type="submit"
               className="btn-primary"

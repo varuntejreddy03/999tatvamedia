@@ -319,6 +319,14 @@ h1, h2, h3, h4, h5, h6 {
   .service-card { grid-column: span 1 !important; }
   .services-grid { grid-template-columns: 1fr !important; }
 }
+
+/* ─── FOUNDERS GRID RESPONSIVE ─────────────────────────────── */
+@media (max-width: 1023px) {
+  .founders-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media (max-width: 639px) {
+  .founders-grid { grid-template-columns: 1fr !important; }
+}
 @media (max-width: 767px) {
 
   .container-main { padding: 0 20px; }

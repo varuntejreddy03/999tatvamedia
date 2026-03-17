@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Instagram, Mail, ArrowUpRight } from 'lucide-react'
+import { Instagram, Mail, ArrowUpRight, Facebook } from 'lucide-react'
 
 const CG = '"Cabinet Grotesk", sans-serif'
 const NAV_LINKS = ['Home', 'Services', 'About', 'Vision', 'Contact']
@@ -100,6 +100,19 @@ export default function Footer() {
                 </div>
                 <ArrowUpRight size={14} style={{ color: 'rgba(255,255,255,0.3)', marginLeft: 'auto' }} />
               </a>
+
+              {/* Facebook — coming soon */}
+              <div
+                style={{ display: 'flex', alignItems: 'center', gap: 12, marginTop: 12, padding: '10px 14px', borderRadius: 12, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.02)', opacity: 0.6, cursor: 'default' }}
+              >
+                <div style={{ width: 36, height: 36, borderRadius: '50%', background: 'var(--brand-gradient)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <Facebook size={15} style={{ color: '#fff' }} />
+                </div>
+                <div>
+                  <p style={{ fontFamily: CG, fontSize: 14, color: 'rgba(255,255,255,0.45)', fontWeight: 400 }}>Facebook Page</p>
+                  <p style={{ fontFamily: CG, fontSize: 11, color: 'rgba(255,255,255,0.25)', marginTop: 1, letterSpacing: '1px' }}>Coming Soon</p>
+                </div>
+              </div>
             </div>
 
           </div>

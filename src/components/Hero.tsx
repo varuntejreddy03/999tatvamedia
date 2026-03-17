@@ -146,24 +146,25 @@ export default function Hero() {
               </motion.button>
             </motion.div>
 
-            {/* Stats strip */}
+            {/* Social proof bar */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.95 }}
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(4, 1fr)',
-                gap: 24, marginTop: 56,
-                paddingTop: 28, borderTop: '1px solid rgba(255,255,255,0.07)',
-                width: '100%', maxWidth: 480,
-              }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.7, delay: 0.9 }}
+              style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap', gap: 0, marginTop: 40 }}
             >
-              {[['7+', 'Services'], ['100%', 'Focus'], ['3', 'Founders'], ['∞', 'Ideas']].map(([num, label]) => (
-                <div key={label} style={{ textAlign: 'center' }}>
-                  <div className="gradient-text" style={{ fontFamily: '"Clash Display", sans-serif', fontWeight: 600, fontSize: 'clamp(20px, 4vw, 28px)', lineHeight: 1 }}>{num}</div>
-                  <div style={{ fontFamily: '"Cabinet Grotesk", sans-serif', fontSize: 11, color: 'rgba(255,255,255,0.32)', marginTop: 4, letterSpacing: '0.8px', textTransform: 'uppercase' }}>{label}</div>
-                </div>
+              {[
+                'End-to-End Marketing & Production',
+                'Hyderabad’s Creative Agency',
+                'Strategy · Content · Growth',
+              ].map((text, i) => (
+                <>
+                  <div key={text} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '0 16px' }}>
+                    <span style={{ color: '#FF3CAC', fontSize: 8, lineHeight: 1 }}>&#9679;</span>
+                    <span style={{ fontFamily: '"Cabinet Grotesk", sans-serif', fontWeight: 400, fontSize: 13, color: 'rgba(255,255,255,0.45)', letterSpacing: '0.5px' }}>{text}</span>
+                  </div>
+                  {i < 2 && <div style={{ width: 1, height: 14, background: 'rgba(255,255,255,0.15)', flexShrink: 0 }} />}
+                </>
               ))}
             </motion.div>
 
