@@ -45,7 +45,7 @@ function StatCard({ value, label, suffix = '' }: { value: number | string; label
 const FOUNDERS = [
   { initials: 'SK', name: 'J. Sai Kiran',  title: 'Founder' },
   { initials: 'V',  name: 'Vishnu',         title: 'Co-Founder' },
-  { initials: 'VD', name: 'Vijay Daniel',   title: 'COO' },
+  { initials: 'VD', name: 'Daniel Vijay Kumar', title: 'COO' },
   { initials: 'AS', name: 'Akilesh Singh',  title: 'Creative Head' },
 ]
 

@@ -66,8 +66,8 @@ export default function Contact() {
                 </div>
               </div>
             ))}
-            {/* Facebook — coming soon */}
-            <div className="contact-item" style={{ opacity: 0.6, cursor: 'default' }}>
+            {/* Facebook */}
+            <a href="https://www.facebook.com/share/1CVfg9cQJ3/" target="_blank" rel="noopener noreferrer" className="contact-item" style={{ textDecoration: 'none', display: 'flex' }}>
               <div style={{
                 width: 40, height: 40, borderRadius: 10, flexShrink: 0,
                 background: 'rgba(255,255,255,0.04)',
@@ -78,10 +78,9 @@ export default function Contact() {
               </div>
               <div>
                 <p style={{ fontFamily: CG, fontWeight: 400, fontSize: 11, color: 'rgba(255,255,255,0.25)', letterSpacing: '1px', marginBottom: 3, textTransform: 'uppercase' }}>Facebook</p>
-                <p style={{ fontFamily: CG, fontWeight: 400, fontSize: 14, color: 'rgba(255,255,255,0.45)' }}>Facebook Page</p>
-                <p style={{ fontFamily: CG, fontWeight: 400, fontSize: 11, color: 'rgba(255,255,255,0.25)', letterSpacing: '1px', marginTop: 2 }}>Coming Soon</p>
+                <p style={{ fontFamily: CG, fontWeight: 500, fontSize: 15, color: '#fff' }}>Facebook Page</p>
               </div>
-            </div>
+            </a>
           </motion.div>
 
           {/* Form */}
