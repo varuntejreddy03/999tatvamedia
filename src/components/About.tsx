@@ -43,10 +43,11 @@ function StatCard({ value, label, suffix = '' }: { value: number | string; label
 }
 
 const FOUNDERS = [
-  { initials: 'SK', name: 'J. Sai Kiran',       title: 'Founder',       photo: '/Sai kiran.png',       position: 'center top' },
-  { initials: 'V',  name: 'Vishnu',              title: 'Co-Founder',    photo: '/Vishnu.jpeg',         position: 'center top' },
-  { initials: 'VD', name: 'Daniel Vijay Kumar',  title: 'COO',           photo: '/Vijay.png',           position: 'center top' },
-  { initials: 'AS', name: 'Akilesh Singh',       title: 'Creative Head', photo: '/Akilesh singh.jpeg',  position: 'center 25%' },
+  { initials: 'SK', name: 'Sai Kiran', title: 'Founder', photo: '/Sai kiran.png', position: 'center top' },
+  { initials: 'V', name: 'Vishnu', title: 'Co-Founder', photo: '/Vishnu.jpeg', position: 'center top' },
+  { initials: 'VD', name: 'Daniel Vijay Kumar', title: 'COO', photo: '/Vijay.png', position: 'center top' },
+  { initials: 'AS', name: 'Akilesh Singh', title: 'Creative Head', photo: '/Akilesh singh.jpeg', position: 'center 25%' },
+  { initials: 'JB', name: 'J. Bhavani', title: 'Legal Advisor', photo: '/Bhavani.png', position: 'center top' },
 ]
 
 const fadeUp = { hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] as const } } }
@@ -79,10 +80,10 @@ export default function About() {
             viewport={{ once: true, amount: 0.2 }} transition={{ delay: 0.15 }}
             style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}
           >
-            <StatCard value={7}   suffix="+" label="Services Offered" />
+            <StatCard value={7} suffix="+" label="Services Offered" />
             <StatCard value={100} suffix="%" label="Client Focus" />
-            <StatCard value={3}           label="Expert Founders" />
-            <StatCard value="∞"           label="Creative Ideas" />
+            <StatCard value={5} label="Expert Team" />
+            <StatCard value="∞" label="Creative Ideas" />
           </motion.div>
         </div>
 
@@ -90,7 +91,7 @@ export default function About() {
         <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
           <div style={{ height: 1, background: 'rgba(255,255,255,0.06)', marginBottom: 48 }} />
           <p className="eyebrow" style={{ marginBottom: 32 }}>The Team</p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 20 }} className="founders-grid">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 20 }} className="founders-grid">
             {FOUNDERS.map((f, i) => (
               <motion.div
                 key={f.name}
