@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Phone, Mail, MapPin, Instagram, Clock, Facebook } from 'lucide-react'
+import { Phone, Mail, MapPin, Instagram, Clock, MessageCircle, ArrowUpRight } from 'lucide-react'
 
 const CD = '"Clash Display", sans-serif'
 const CG = '"Cabinet Grotesk", sans-serif'
@@ -30,7 +30,7 @@ export default function Contact() {
           </p>
         </motion.div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 40, marginTop: 64, alignItems: 'start' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 40, marginTop: 64, alignItems: 'start', width: '100%', boxSizing: 'border-box' }}>
 
           {/* Contact Info */}
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
@@ -66,20 +66,41 @@ export default function Contact() {
                 </div>
               </div>
             ))}
-            {/* Facebook */}
-            <a href="https://www.facebook.com/share/1CVfg9cQJ3/" target="_blank" rel="noopener noreferrer" className="contact-item" style={{ textDecoration: 'none', display: 'flex' }}>
+            {/* WhatsApp */}
+            <a href="https://wa.me/916309681739" target="_blank" rel="noopener noreferrer" className="contact-item"
+              style={{ textDecoration: 'none', display: 'flex', alignItems: 'flex-start', gap: 14 }}
+            >
               <div style={{
                 width: 40, height: 40, borderRadius: 10, flexShrink: 0,
-                background: 'rgba(255,255,255,0.04)',
-                border: '1px solid rgba(255,255,255,0.08)',
+                background: 'linear-gradient(135deg, #25D366, #128C7E)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
               }}>
-                <Facebook size={17} style={{ color: '#FF3CAC' }} />
+                <MessageCircle size={17} style={{ color: '#fff' }} />
               </div>
               <div>
-                <p style={{ fontFamily: CG, fontWeight: 400, fontSize: 11, color: 'rgba(255,255,255,0.25)', letterSpacing: '1px', marginBottom: 3, textTransform: 'uppercase' }}>Facebook</p>
-                <p style={{ fontFamily: CG, fontWeight: 500, fontSize: 15, color: '#fff' }}>Facebook Page</p>
+                <p style={{ fontFamily: CG, fontWeight: 400, fontSize: 11, color: 'rgba(255,255,255,0.25)', letterSpacing: '1px', marginBottom: 3, textTransform: 'uppercase' }}>WhatsApp</p>
+                <p style={{ fontFamily: CG, fontWeight: 500, fontSize: 15, color: '#fff' }}>WhatsApp Us</p>
+                <p style={{ fontFamily: CG, fontWeight: 400, fontSize: 12, color: 'rgba(255,255,255,0.45)', marginTop: 2 }}>+91 63096 81739</p>
               </div>
+            </a>
+
+            {/* Google Business */}
+            <a href="#" data-update="google-business-link" target="_blank" rel="noopener noreferrer" className="contact-item"
+              style={{ textDecoration: 'none', display: 'flex', alignItems: 'flex-start', gap: 14 }}
+            >
+              <div style={{
+                width: 40, height: 40, borderRadius: 10, flexShrink: 0,
+                background: 'var(--brand-gradient)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+              }}>
+                <MapPin size={17} style={{ color: '#fff' }} />
+              </div>
+              <div>
+                <p style={{ fontFamily: CG, fontWeight: 400, fontSize: 11, color: 'rgba(255,255,255,0.25)', letterSpacing: '1px', marginBottom: 3, textTransform: 'uppercase' }}>Google</p>
+                <p style={{ fontFamily: CG, fontWeight: 500, fontSize: 15, color: 'rgba(255,255,255,0.6)' }}>Google Business</p>
+                <p style={{ fontFamily: CG, fontWeight: 400, fontSize: 11, color: 'rgba(255,255,255,0.3)', marginTop: 2, letterSpacing: '1px' }}>Find Us on Google</p>
+              </div>
+              <ArrowUpRight size={14} style={{ color: 'rgba(255,255,255,0.3)', marginLeft: 'auto', flexShrink: 0 }} />
             </a>
           </motion.div>
 

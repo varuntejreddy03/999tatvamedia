@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Instagram, Mail, ArrowUpRight, Facebook } from 'lucide-react'
+import { Instagram, Mail, ArrowUpRight, MessageCircle, MapPin } from 'lucide-react'
 
 const CG = '"Cabinet Grotesk", sans-serif'
 const NAV_LINKS = ['Home', 'Services', 'About', 'Vision', 'Contact']
@@ -29,7 +29,12 @@ export default function Footer() {
 
             {/* Brand */}
             <div style={{ background: '#050505' }}>
-              <img src="/logo.png" alt="999 Tatva Media" style={{ height: 32, width: 'auto', marginBottom: 16 }} />
+              <img
+                src="/logo-white.png"
+                alt="999 Tatva Media"
+                onError={(e) => { e.currentTarget.src = '/logo.png' }}
+                style={{ height: 40, width: 'auto', objectFit: 'contain', display: 'block', marginBottom: 16 }}
+              />
               <p style={{ fontFamily: CG, fontSize: 13, color: 'rgba(255,255,255,0.4)', lineHeight: 1.7, maxWidth: 220 }}>
                 A full-service digital marketing &amp; creative production agency based in Hyderabad, India.
               </p>
@@ -101,19 +106,39 @@ export default function Footer() {
                 <ArrowUpRight size={14} style={{ color: 'rgba(255,255,255,0.3)', marginLeft: 'auto' }} />
               </a>
 
-              {/* Facebook */}
+              {/* WhatsApp */}
               <a
-                href="https://www.facebook.com/share/1CVfg9cQJ3/"
+                href="https://wa.me/916309681739"
                 target="_blank" rel="noopener noreferrer"
-                style={{ display: 'flex', alignItems: 'center', gap: 12, marginTop: 12, padding: '10px 14px', borderRadius: 12, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.02)', textDecoration: 'none', transition: 'border-color 0.2s, background 0.2s' }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(43,134,197,0.3)'; (e.currentTarget as HTMLElement).style.background = 'rgba(43,134,197,0.04)' }}
+                style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none', marginBottom: 12, padding: '10px 14px', borderRadius: 12, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.02)', transition: 'opacity 0.2s, transform 0.2s' }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.opacity = '1'; (e.currentTarget as HTMLElement).style.transform = 'scale(1.02)' }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.opacity = '0.9'; (e.currentTarget as HTMLElement).style.transform = 'scale(1)' }}
+              >
+                <div style={{ width: 36, height: 36, borderRadius: '50%', background: 'linear-gradient(135deg, #25D366, #128C7E)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <MessageCircle size={15} style={{ color: '#fff' }} />
+                </div>
+                <div>
+                  <p style={{ fontFamily: CG, fontSize: 14, color: '#fff', fontWeight: 500 }}>WhatsApp Us</p>
+                  <p style={{ fontFamily: CG, fontSize: 12, color: 'rgba(255,255,255,0.45)', marginTop: 1 }}>+91 63096 81739</p>
+                </div>
+                <ArrowUpRight size={14} style={{ color: 'rgba(255,255,255,0.4)', marginLeft: 'auto' }} />
+              </a>
+
+              {/* Google Business */}
+              <a
+                href="#"
+                data-update="google-business-link"
+                target="_blank" rel="noopener noreferrer"
+                style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none', padding: '10px 14px', borderRadius: 12, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.02)', transition: 'border-color 0.2s, background 0.2s' }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,107,0,0.3)'; (e.currentTarget as HTMLElement).style.background = 'rgba(255,107,0,0.04)' }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.06)'; (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.02)' }}
               >
                 <div style={{ width: 36, height: 36, borderRadius: '50%', background: 'var(--brand-gradient)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                  <Facebook size={15} style={{ color: '#fff' }} />
+                  <MapPin size={15} style={{ color: '#fff' }} />
                 </div>
                 <div>
-                  <p style={{ fontFamily: CG, fontSize: 14, color: 'rgba(255,255,255,0.45)', fontWeight: 400 }}>Facebook Page</p>
+                  <p style={{ fontFamily: CG, fontSize: 14, color: 'rgba(255,255,255,0.6)', fontWeight: 400 }}>Google Business</p>
+                  <p style={{ fontFamily: CG, fontSize: 11, color: 'rgba(255,255,255,0.3)', marginTop: 1, letterSpacing: '1px' }}>Find Us on Google</p>
                 </div>
                 <ArrowUpRight size={14} style={{ color: 'rgba(255,255,255,0.3)', marginLeft: 'auto' }} />
               </a>

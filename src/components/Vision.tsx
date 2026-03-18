@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 
-const VISION = 'To become a leading digital marketing partner for ambitious brands — delivering innovative campaigns that blend creativity, technology, and strategy to drive long-term growth.'
+const VISION = 'To become a leading digital marketing partner for ambitious brands. Delivering innovative campaigns that blend creativity, technology, and strategy to drive long-term growth.'
 
 export default function Vision() {
   return (

@@ -43,10 +43,10 @@ function StatCard({ value, label, suffix = '' }: { value: number | string; label
 }
 
 const FOUNDERS = [
-  { initials: 'SK', name: 'J. Sai Kiran',  title: 'Founder' },
-  { initials: 'V',  name: 'Vishnu',         title: 'Co-Founder' },
-  { initials: 'VD', name: 'Daniel Vijay Kumar', title: 'COO' },
-  { initials: 'AS', name: 'Akilesh Singh',  title: 'Creative Head' },
+  { initials: 'SK', name: 'J. Sai Kiran',       title: 'Founder',       photo: '/Sai kiran.png',       position: 'center top' },
+  { initials: 'V',  name: 'Vishnu',              title: 'Co-Founder',    photo: '/Vishnu.jpeg',         position: 'center top' },
+  { initials: 'VD', name: 'Daniel Vijay Kumar',  title: 'COO',           photo: '/Vijay.png',           position: 'center top' },
+  { initials: 'AS', name: 'Akilesh Singh',       title: 'Creative Head', photo: '/Akilesh singh.jpeg',  position: 'center 25%' },
 ]
 
 const fadeUp = { hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] as const } } }
@@ -99,13 +99,31 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.12, duration: 0.55, ease: [0.16, 1, 0.3, 1] as const }}
+                style={{ padding: '36px 24px 32px', minHeight: 240 }}
               >
+                <img
+                  src={f.photo}
+                  alt={f.name}
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                    const fallback = e.currentTarget.nextElementSibling as HTMLElement | null;
+                    if (fallback) fallback.style.display = 'flex';
+                  }}
+                  style={{
+                    width: 120, height: 120, borderRadius: '50%',
+                    objectFit: 'cover', objectPosition: f.position,
+                    filter: 'grayscale(100%) contrast(1.1) brightness(0.95)',
+                    border: '2px solid rgba(255,255,255,0.1)',
+                    margin: '0 auto 20px', display: 'block',
+                  }}
+                />
+                {/* Fallback initials — shown only if image fails */}
                 <div style={{
-                  width: 64, height: 64, borderRadius: '50%',
+                  display: 'none', width: 120, height: 120, borderRadius: '50%',
                   background: 'var(--brand-gradient)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  margin: '0 auto 16px',
-                  fontFamily: CD, fontWeight: 600, fontSize: 20, color: '#fff',
+                  alignItems: 'center', justifyContent: 'center',
+                  margin: '0 auto 20px',
+                  fontFamily: CD, fontWeight: 600, fontSize: 24, color: '#fff',
                 }}>
                   {f.initials}
                 </div>
