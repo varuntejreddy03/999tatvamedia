@@ -73,10 +73,12 @@ export default function Footer() {
                 Connect
               </p>
 
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+
               <a
                 href="https://www.instagram.com/999tatva.media"
                 target="_blank" rel="noopener noreferrer"
-                style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none', marginBottom: 16, padding: '10px 14px', borderRadius: 12, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.02)', transition: 'border-color 0.2s, background 0.2s' }}
+                style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none', padding: '10px 14px', borderRadius: 12, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.02)', transition: 'border-color 0.2s, background 0.2s' }}
                 onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,60,172,0.3)'; (e.currentTarget as HTMLElement).style.background = 'rgba(255,60,172,0.04)' }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.06)'; (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.02)' }}
               >
@@ -106,11 +108,10 @@ export default function Footer() {
                 <ArrowUpRight size={14} style={{ color: 'rgba(255,255,255,0.3)', marginLeft: 'auto' }} />
               </a>
 
-              {/* WhatsApp */}
               <a
                 href="https://wa.me/916309681739"
                 target="_blank" rel="noopener noreferrer"
-                style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none', marginBottom: 12, padding: '10px 14px', borderRadius: 12, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.02)', transition: 'opacity 0.2s, transform 0.2s' }}
+                style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none', padding: '10px 14px', borderRadius: 12, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.02)', transition: 'opacity 0.2s, transform 0.2s' }}
                 onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.opacity = '1'; (e.currentTarget as HTMLElement).style.transform = 'scale(1.02)' }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.opacity = '0.9'; (e.currentTarget as HTMLElement).style.transform = 'scale(1)' }}
               >
@@ -124,7 +125,6 @@ export default function Footer() {
                 <ArrowUpRight size={14} style={{ color: 'rgba(255,255,255,0.4)', marginLeft: 'auto' }} />
               </a>
 
-              {/* Google Business */}
               <a
                 href="#"
                 data-update="google-business-link"
@@ -142,6 +142,8 @@ export default function Footer() {
                 </div>
                 <ArrowUpRight size={14} style={{ color: 'rgba(255,255,255,0.3)', marginLeft: 'auto' }} />
               </a>
+
+              </div>
             </div>
 
           </div>
