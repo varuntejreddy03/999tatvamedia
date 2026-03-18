@@ -30,7 +30,7 @@ export default function Footer() {
             {/* Brand */}
             <div style={{ background: '#050505' }}>
               <img
-                src="/logo-white.png"
+                src="/Asset 12.png"
                 alt="999 Tatva Media"
                 onError={(e) => { e.currentTarget.src = '/logo.png' }}
                 style={{ height: 40, width: 'auto', objectFit: 'contain', display: 'block', marginBottom: 16 }}
