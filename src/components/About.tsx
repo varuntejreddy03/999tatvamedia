@@ -43,11 +43,11 @@ function StatCard({ value, label, suffix = '' }: { value: number | string; label
 }
 
 const FOUNDERS = [
-  { initials: 'SK', name: 'Sai Kiran', title: 'Founder', photo: '/Sai kiran.png', position: 'center top' },
-  { initials: 'V', name: 'Vishnu', title: 'Co-Founder', photo: '/Vishnu.jpeg', position: 'center top' },
-  { initials: 'VD', name: 'Daniel Vijay Kumar', title: 'COO', photo: '/Vijay.png', position: 'center top' },
-  { initials: 'AS', name: 'Akilesh Singh', title: 'Creative Head', photo: '/Akilesh singh.jpeg', position: 'center 25%' },
-  { initials: 'JB', name: 'J. Bhavani', title: 'Legal Advisor', photo: '/Bhavani.png', position: 'center top' },
+  { initials: 'VD', name: 'Daniel Vijay Kumar', title: 'COO', photo: '/Vijay.png', position: '50% 26%', featured: false },
+  { initials: 'SK', name: 'Sai Kiran', title: 'Founder', photo: '/Sai kiran.png', position: '50% 18%', featured: true },
+  { initials: 'V', name: 'Vishnu', title: 'Co-Founder', photo: '/Vishnu.jpeg', position: '50% 22%', featured: true },
+  { initials: 'AS', name: 'Akilesh Singh', title: 'Creative Head', photo: '/Akilesh singh.jpeg', position: '50% 34%', featured: false },
+  { initials: 'JB', name: 'J. Bhavani', title: 'Legal Advisor', photo: '/Bhavani.png', position: '50% 24%', featured: false },
 ]
 
 const fadeUp = { hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] as const } } }
@@ -89,50 +89,53 @@ export default function About() {
 
         {/* Founders */}
         <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
-          <div style={{ height: 1, background: 'rgba(255,255,255,0.06)', marginBottom: 48 }} />
-          <p className="eyebrow" style={{ marginBottom: 32 }}>The Team</p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 20 }} className="founders-grid">
-            {FOUNDERS.map((f, i) => (
-              <motion.div
-                key={f.name}
-                className="founder-card"
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.12, duration: 0.55, ease: [0.16, 1, 0.3, 1] as const }}
-                style={{ padding: '36px 24px 32px', minHeight: 240 }}
-              >
-                <img
-                  src={f.photo}
-                  alt={f.name}
-                  onError={(e) => {
-                    e.currentTarget.style.display = 'none';
-                    const fallback = e.currentTarget.nextElementSibling as HTMLElement | null;
-                    if (fallback) fallback.style.display = 'flex';
-                  }}
-                  style={{
-                    width: 120, height: 120, borderRadius: '50%',
-                    objectFit: 'cover', objectPosition: f.position,
-                    filter: 'grayscale(100%) contrast(1.1) brightness(0.95)',
-                    border: '2px solid rgba(255,255,255,0.1)',
-                    margin: '0 auto 20px', display: 'block',
-                  }}
-                />
-                {/* Fallback initials — shown only if image fails */}
-                <div style={{
-                  display: 'none', width: 120, height: 120, borderRadius: '50%',
-                  background: 'var(--brand-gradient)',
-                  alignItems: 'center', justifyContent: 'center',
-                  margin: '0 auto 20px',
-                  fontFamily: CD, fontWeight: 600, fontSize: 24, color: '#fff',
-                }}>
-                  {f.initials}
-                </div>
-                <p style={{ fontFamily: CD, fontWeight: 600, fontSize: 18, color: '#fff' }}>{f.name}</p>
-                <p style={{ fontFamily: CG, fontWeight: 400, fontSize: 13, color: 'rgba(255,255,255,0.45)', marginTop: 4 }}>{f.title}</p>
-              </motion.div>
-            ))}
-          </div>
+          <div className="mb-12 h-px bg-white/10" />
+          <section className="relative overflow-hidden rounded-3xl border border-white/10 bg-[#080607] px-4 py-10 sm:px-6 lg:px-8">
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-red-900/30 via-orange-700/10 to-transparent blur-2xl" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-44 bg-gradient-to-l from-violet-700/30 via-rose-700/10 to-transparent blur-2xl" />
+
+            <p className="eyebrow relative z-10 mb-8">The Team</p>
+
+            <div className="relative z-10 mx-auto flex w-full min-w-0 max-w-7xl flex-nowrap items-end justify-center gap-2 overflow-x-hidden pb-2 lg:gap-3">
+              {FOUNDERS.map((f, i) => (
+                <motion.div
+                  key={f.name}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1, duration: 0.55, ease: [0.16, 1, 0.3, 1] as const }}
+                  className="group relative flex min-w-0 flex-[1_1_0] flex-col items-center overflow-hidden rounded-[24px] border border-white/10 bg-[#0f0b0f]/90 px-2.5 py-5 text-center shadow-[0_0_0_1px_rgba(255,255,255,0.03),0_14px_30px_rgba(0,0,0,0.42)] backdrop-blur-sm sm:px-3 lg:min-h-[220px]"
+                >
+                  <div className="relative mb-3 flex h-16 w-16 overflow-hidden rounded-full bg-zinc-800 ring-1 ring-white/10 sm:h-20 sm:w-20 lg:h-24 lg:w-24">
+                    <img
+                      src={f.photo}
+                      alt={f.name}
+                      onError={(e) => {
+                        e.currentTarget.style.display = 'none'
+                        const fallback = e.currentTarget.nextElementSibling as HTMLElement | null
+                        if (fallback) fallback.style.display = 'flex'
+                      }}
+                      className="h-full w-full rounded-full object-cover grayscale"
+                      style={{ objectPosition: f.position }}
+                    />
+                    <div className="absolute inset-0 hidden items-center justify-center rounded-full bg-zinc-800 text-xl font-semibold text-white">
+                      {f.initials}
+                    </div>
+                  </div>
+
+                  <p className="text-[13px] text-white sm:text-[15px] lg:text-[18px]" style={{ fontFamily: CD, fontWeight: 600, lineHeight: 1.2 }}>
+                    {f.name}
+                  </p>
+                  <p className="mt-1 text-[10px] sm:text-[11px] text-white/55" style={{ fontFamily: CG }}>
+                    {f.title}
+                  </p>
+
+                  <div className="pointer-events-none absolute inset-x-4 bottom-0 h-[2px] rounded-full bg-gradient-to-r from-red-500/80 via-orange-400/85 to-rose-500/80" />
+                  <div className="pointer-events-none absolute inset-0 rounded-[24px] ring-1 ring-inset ring-white/5 transition group-hover:ring-white/15" />
+                </motion.div>
+              ))}
+            </div>
+          </section>
         </motion.div>
 
       </div>
