@@ -43,7 +43,7 @@ function StatCard({ value, label, suffix = '' }: { value: number | string; label
 }
 
 const FOUNDERS = [
-  { initials: 'VD', name: 'Daniel Vijay Kumar', title: 'COO', photo: '/Vijay.png', position: '50% 26%', featured: false },
+  { initials: 'VD', name: 'Daniel Vijay', title: 'COO', photo: '/Vijay.png', position: '50% 26%', featured: false },
   { initials: 'SK', name: 'Sai Kiran', title: 'Founder', photo: '/Sai kiran.png', position: '50% 18%', featured: true },
   { initials: 'V', name: 'Vishnu', title: 'Co-Founder', photo: '/Vishnu.jpeg', position: '50% 22%', featured: true },
   { initials: 'AS', name: 'Akilesh Singh', title: 'Creative Head', photo: '/Akilesh singh.jpeg', position: '50% 34%', featured: false },
