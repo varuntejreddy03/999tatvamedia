@@ -36,7 +36,7 @@ export default function Footer() {
                 style={{ height: 40, width: 'auto', objectFit: 'contain', display: 'block', marginBottom: 16 }}
               />
               <p style={{ fontFamily: CG, fontSize: 13, color: 'rgba(255,255,255,0.4)', lineHeight: 1.7, maxWidth: 220 }}>
-                A full-service digital marketing &amp; creative production agency based in Hyderabad, India.
+                A full-service digital marketing &amp; creative production agency based in Hyderabad, Telangana, India.
               </p>
               <p style={{ fontFamily: CG, fontSize: 12, color: 'rgba(255,255,255,0.25)', marginTop: 12, letterSpacing: '0.5px' }}>
                 Marketing · Branding · Social Media
@@ -154,7 +154,7 @@ export default function Footer() {
               © 2025 999Tatva Media. All Rights Reserved.
             </p>
             <p style={{ fontFamily: CG, fontSize: 12, color: 'rgba(255,255,255,0.22)' }}>
-              Hyderabad, India
+              Hyderabad, Telangana, India
             </p>
           </div>
 

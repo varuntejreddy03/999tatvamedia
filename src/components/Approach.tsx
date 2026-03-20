@@ -1,13 +1,14 @@
 import { motion } from 'framer-motion'
-import { Target, BookOpen, BarChart3 } from 'lucide-react'
+import { Target, BookOpen, BarChart3, BarChart2 } from 'lucide-react'
 
 const CD = '"Clash Display", sans-serif'
 const CG = '"Cabinet Grotesk", sans-serif'
 
 const PILLARS = [
-  { Icon: Target,    title: 'Strategic Thinking',      body: "Marketing is not just visibility — it's crafting meaningful brand experiences that build lasting loyalty." },
-  { Icon: BookOpen,  title: 'Compelling Storytelling', body: 'Every campaign tells a brand story that resonates deeply with your audience, turning viewers into advocates.' },
-  { Icon: BarChart3, title: 'Performance-Driven',      body: 'Data-backed campaigns that deliver real, measurable ROI — because creativity without results is just art.' },
+  { Icon: Target,    color: '#FF3CAC', title: 'Strategic Thinking',               body: "Marketing is not just visibility. It's crafting meaningful brand experiences that build lasting loyalty." },
+  { Icon: BookOpen,  color: '#FF3CAC', title: 'Compelling Storytelling',           body: 'Every campaign tells a brand story that resonates deeply with your audience, turning viewers into advocates.' },
+  { Icon: BarChart3, color: '#FF3CAC', title: 'Performance-Driven',                body: 'Data-backed campaigns that deliver real, measurable ROI. Creativity without results is just art.' },
+  { Icon: BarChart2, color: '#2B86C5', title: 'Market Insight & Audience Targeting', body: 'We dig deep into market trends and audience behavior to ensure every campaign reaches the right people at the right time with the right message.' },
 ]
 
 const container = { hidden: {}, visible: { transition: { staggerChildren: 0.14 } } }
@@ -27,9 +28,10 @@ export default function Approach() {
 
         <motion.div
           variants={container} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.15 }}
-          style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: 20 }}
+          style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 32 }}
+          className="approach-grid"
         >
-          {PILLARS.map(({ Icon, title, body }) => (
+          {PILLARS.map(({ Icon, color, title, body }) => (
             <motion.div key={title} variants={fadeUp} className="pillar-card">
               <div style={{
                 width: 56, height: 56, borderRadius: 16,
@@ -38,7 +40,7 @@ export default function Approach() {
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 marginBottom: 20,
               }}>
-                <Icon size={24} style={{ color: '#FF3CAC' }} />
+                <Icon size={24} style={{ color }} />
               </div>
               <div style={{ width: 40, height: 2, background: 'var(--brand-gradient)', marginBottom: 20 }} />
               <h3 style={{ fontFamily: CD, fontWeight: 600, fontSize: 22, color: '#fff', marginBottom: 12 }}>{title}</h3>

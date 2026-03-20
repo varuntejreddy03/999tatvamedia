@@ -30,10 +30,10 @@ export default function Contact() {
           </p>
         </motion.div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 40, marginTop: 64, alignItems: 'start', width: '100%', boxSizing: 'border-box' }}>
+        <div className="contact-section-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 40, marginTop: 64, alignItems: 'start', width: '100%', boxSizing: 'border-box' }}>
 
           {/* Contact Info */}
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
+          <motion.div className="contact-info-col" variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
             {ITEMS.map(({ Icon, label, value, href, gradient }) => (
               <div key={label} className="contact-item">
                 <div style={{
@@ -106,6 +106,7 @@ export default function Contact() {
 
           {/* Form */}
           <motion.form
+            className="contact-form-col contact-form-wrapper"
             variants={fadeUp} initial="hidden" whileInView="visible"
             viewport={{ once: true, amount: 0.2 }} transition={{ delay: 0.15 }}
             onSubmit={(e) => e.preventDefault()}
@@ -118,8 +119,8 @@ export default function Contact() {
               overflow: 'hidden', boxSizing: 'border-box',
             }}
           >
-            <input type="text"  placeholder="Your Name"                     className="form-input" style={{ boxSizing: 'border-box', maxWidth: '100%' }} />
-            <input type="email" placeholder="Email Address"                 className="form-input" style={{ boxSizing: 'border-box', maxWidth: '100%' }} />
+            <input id="contact-name" type="text"  placeholder="Your Name"  className="form-input" style={{ boxSizing: 'border-box', maxWidth: '100%' }} />
+            <input type="email" inputMode="email" placeholder="Email Address" className="form-input" style={{ boxSizing: 'border-box', maxWidth: '100%' }} />
             <input type="tel"   placeholder="Phone Number"                  className="form-input" style={{ boxSizing: 'border-box', maxWidth: '100%' }} />
             <textarea           placeholder="Tell us about your project..." rows={4} className="form-input" style={{ resize: 'vertical', marginBottom: 8, minHeight: 120, maxHeight: 200, boxSizing: 'border-box', maxWidth: '100%' }} />
             <motion.button

@@ -7,11 +7,11 @@ const CG = '"Cabinet Grotesk", sans-serif'
 const SERVICES = [
   { icon: Target,    name: 'Brand Strategy',                      desc: 'Positioning, identity, and messaging that makes your brand unforgettable in a crowded market.', span: 2 },
   { icon: Share2,    name: 'Social Media Marketing',              desc: 'Platform-native content that builds community and drives real engagement.',                       span: 1 },
-  { icon: TrendingUp,name: 'Performance Marketing',               desc: 'Data-driven paid campaigns that maximize ROI across every channel.',                             span: 1 },
+  { icon: TrendingUp,name: 'Performance-Driven Campaigns',        desc: 'High-impact paid campaigns across digital platforms that generate leads, maximize ROI, and convert audiences into loyal customers.', span: 1 },
   { icon: Film,      name: 'Content Creation',                    desc: 'Reels, videos, and ad creatives that stop the scroll and convert viewers.',                      span: 1 },
   { icon: Package,   name: 'Packaging Design',                    desc: 'Shelf-ready packaging that communicates brand value at a glance.',                               span: 1 },
   { icon: Users,     name: 'Influencer & Digital Campaigns',      desc: 'Authentic influencer partnerships that amplify reach and build trust.',                          span: 1 },
-  { icon: Palette,   name: 'Creative Design & Media Production',  desc: 'End-to-end creative production — from concept to final delivery.',                              span: 2 },
+  { icon: Palette,   name: 'Creative Design & Media Production',  desc: 'End-to-end creative production, from concept to final delivery.',                               span: 2 },
 ]
 
 const container = {
@@ -21,6 +21,14 @@ const container = {
 const item = {
   hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] as const } },
+}
+
+const handleServiceClick = () => {
+  const el = document.getElementById('contact-name')
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    setTimeout(() => el.focus(), 800)
+  }
 }
 
 export default function Services() {
@@ -64,7 +72,8 @@ export default function Services() {
                 key={s.name}
                 variants={item}
                 className="service-card"
-                style={{ gridColumn: `span ${s.span}` }}
+                style={{ gridColumn: `span ${s.span}`, cursor: 'pointer' }}
+                onClick={handleServiceClick}
               >
                 {/* Corner arrow */}
                 <div style={{ position: 'absolute', top: 20, right: 20, color: 'rgba(255,255,255,0.2)', transition: 'all 0.3s ease' }}
@@ -91,6 +100,10 @@ export default function Services() {
                 <p style={{ fontFamily: CG, fontWeight: 400, fontSize: 14, color: 'rgba(255,255,255,0.45)', lineHeight: 1.65, maxWidth: 340 }}>
                   {s.desc}
                 </p>
+                <div className="service-cta" style={{ marginTop: 16, display: 'flex', alignItems: 'center', gap: 6, opacity: 0.5, fontSize: 12, fontFamily: CG, color: '#FF3CAC', transition: 'opacity 0.2s' }}>
+                  <span>Get Started</span>
+                  <ArrowUpRight size={12} />
+                </div>
               </motion.div>
             )
           })}

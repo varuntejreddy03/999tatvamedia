@@ -23,10 +23,10 @@ export default function App() {
     document.documentElement.style.background = '#050505'
 
     const lenis = new Lenis({
-      duration: 2.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      wheelMultiplier: 0.6,
-      touchMultiplier: 0.8,
+      duration: 1.4,
+      easing: (t) => 1 - Math.pow(1 - t, 4),
+      wheelMultiplier: 0.9,
+      touchMultiplier: 1.2,
     })
     lenisInstance = lenis
     function raf(time: number) {

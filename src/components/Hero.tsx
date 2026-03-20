@@ -52,7 +52,7 @@ export default function Hero() {
                 transition={{ duration: 1.8, repeat: Infinity }}
                 style={{ width: 5, height: 5, borderRadius: '50%', background: '#FF3CAC', flexShrink: 0 }}
               />
-              Hyderabad, India
+              Hyderabad, Telangana, India
             </motion.div>
 
             {/* Headline */}
@@ -117,7 +117,7 @@ export default function Hero() {
                 maxWidth: 440, lineHeight: 1.7, marginTop: 32,
               }}
             >
-              Full-service digital marketing &amp; creative production agency — Hyderabad, India
+              Full-service digital marketing &amp; creative production agency. Hyderabad, Telangana, India
             </motion.p>
 
             {/* CTAs */}
