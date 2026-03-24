@@ -102,7 +102,7 @@ export default function Footer() {
                   <Mail size={15} style={{ color: '#fff' }} />
                 </div>
                 <div>
-                  <p style={{ fontFamily: CG, fontSize: 13, color: '#fff', fontWeight: 500 }}>999tatva.media@gmail.com</p>
+                  <p style={{ fontFamily: CG, fontSize: 13, color: '#fff', fontWeight: 500, wordBreak: 'break-all' }}>999tatva.media@gmail.com</p>
                   <p style={{ fontFamily: CG, fontSize: 11, color: 'rgba(255,255,255,0.3)', marginTop: 1 }}>Email Us</p>
                 </div>
                 <ArrowUpRight size={14} style={{ color: 'rgba(255,255,255,0.3)', marginLeft: 'auto' }} />

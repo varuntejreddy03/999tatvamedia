@@ -57,7 +57,7 @@ function StatCard({ value, label, suffix = '' }: { value: number | string; label
 const FOUNDERS = [
   {
     initials: 'SK',
-    name: 'J. Sai Kiran',
+    name: 'Sai Kiran',
     title: 'Founder',
     image: '/sai-kiran.png',
     objectPosition: '48% 10%',

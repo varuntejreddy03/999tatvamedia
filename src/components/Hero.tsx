@@ -131,10 +131,10 @@ export default function Hero() {
                 className="btn-primary"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.96 }}
-                onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                 style={{ display: 'flex', alignItems: 'center', gap: 8 }}
               >
-                View Our Work <ArrowRight size={16} />
+                Start Your Project <ArrowRight size={16} />
               </motion.button>
               <motion.button
                 className="btn-secondary"
